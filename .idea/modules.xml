@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/pager-easy-call-go.iml" filepath="$PROJECT_DIR$/.idea/pager-easy-call-go.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pagient-easy-call-go.iml" filepath="$PROJECT_DIR$/.idea/pagient-easy-call-go.iml" />
     </modules>
   </component>
 </project>

@@ -1,4 +1,4 @@
-package pagient
+package easycall
 
 // Message represents a standard response.
 type Message struct {

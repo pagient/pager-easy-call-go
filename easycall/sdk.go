@@ -1,4 +1,4 @@
-package pagient
+package easycall
 
 import (
 	"net/http"
@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	pathPagers = "%s/pagers"
+	pathSend = "%s/send"
 )
 
 // ClientAPI describes a client API
@@ -16,7 +16,7 @@ type ClientAPI interface {
 	SetCredentials(string, string)
 
 	// PagerList returns a list of all pagers
-	PagerList() ([]*Pager, error)
+	Send(*SendOptions) error
 }
 
 // Default implements the client interface
@@ -41,11 +41,9 @@ func (c *Default) SetCredentials(username, password string) {
 	c.password = password
 }
 
-func (c *Default) PagerList() ([]*Pager, error) {
-	var out []*Pager
+func (c *Default) Send(options *SendOptions) error {
+	uri := fmt.Sprintf(pathSend, c.base)
+	err := c.post(uri, options, nil)
 
-	uri := fmt.Sprintf(pathPagers, c.base)
-	err := c.get(uri, &out)
-
-	return out, err
+	return err
 }
