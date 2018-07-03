@@ -1,9 +1,9 @@
 package easycall
 
 import (
+	"fmt"
 	"net/http"
 	"time"
-	"fmt"
 )
 
 const (
@@ -12,33 +12,27 @@ const (
 
 // ClientAPI describes a client API
 type ClientAPI interface {
-	// SetCredentials sets authentication credentials
-	SetCredentials(string, string)
-
 	// PagerList returns a list of all pagers
 	Send(*SendOptions) error
 }
 
 // Default implements the client interface
 type Default struct {
-	client      *http.Client
-	base        string
-	username    string
-	password    string
+	client   *http.Client
+	base     string
+	username string
+	password string
 }
 
-func NewClient(uri string) ClientAPI {
+func NewClient(uri string, username, password string) ClientAPI {
 	return &Default{
 		client: &http.Client{
 			Timeout: time.Second * 10,
 		},
-		base:   uri,
+		base:     uri,
+		username: username,
+		password: password,
 	}
-}
-
-func (c *Default) SetCredentials(username, password string) {
-	c.username = username
-	c.password = password
 }
 
 func (c *Default) Send(options *SendOptions) error {
