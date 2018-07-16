@@ -1,5 +1,6 @@
 package easycall
 
+// SendOptions API model
 type SendOptions struct {
 	Receiver    int    `json:"receiver"`
 	Message     string `json:"message"`

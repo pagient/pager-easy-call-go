@@ -24,6 +24,7 @@ type Default struct {
 	password string
 }
 
+// NewClient returns a default client
 func NewClient(uri string, username, password string) ClientAPI {
 	return &Default{
 		client: &http.Client{
@@ -35,6 +36,7 @@ func NewClient(uri string, username, password string) ClientAPI {
 	}
 }
 
+// Send calls a pager depending on the SendOptions
 func (c *Default) Send(options *SendOptions) error {
 	uri := fmt.Sprintf(pathSend, c.base)
 	err := c.post(uri, options, nil)
